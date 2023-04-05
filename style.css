@@ -4,7 +4,10 @@ body {
 }
 
 .cabecalho{
-
     background-color: dimgray;
+}
 
+.cabecalho__imagem{
+    width: 530px;;
+    height: 390px;;
 }
