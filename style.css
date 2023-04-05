@@ -5,6 +5,7 @@ body {
 
 .cabecalho{
     background-color: dimgray;
+    border-radius:0px 0px 0px 90px;
 }
 
 .cabecalho__imagem{
