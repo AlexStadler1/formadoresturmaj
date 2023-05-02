@@ -35,9 +35,213 @@
         <section class="professores">
             <h2>Professores do Colégio Estadual do Campo Cerrado das Cinzas</h2>
             <div class="professores__div">
-                <img class="professores__div-imagem" src="avatar.jpeg" alt="foto do personagem">
-                <h3 class="professores__div-titulo">Franciele Pastori</h3>
-                <p class="professores__div-paragrafo">Matemática e Física</p>
-            </div>
+            </section>
+            <body>
+                <div class="container">
+                       <h1>Calculadora&nbsp;Imc</h1> 
+            
+                       
+            
+                     <div class="div-form">
+                           
+                            <div class="div-input-form">
+                                <label class="label-form" for="altura">Altura</label>
+                                <input class="input-form" id="altura" placeholder="Ex: 1.75" name="altura">
+                            </div>
+            
+                            <div class="div-input-form">
+                                <label class="label-form" for="peso">Peso</label>
+                                <input class="input-form" id="peso" placeholder="Ex: 65.0" name="peso">
+                            </div>
+            
+                            <div class="div-input-form">
+                                <span class="info-erro">Informe todos os dados para o calculo</span> 
+                                <button class="button-form" id="calcular">Calcular</button>
+                            </div>
+            
+                            <!-- <div class="div-input-form">
+                                  <table class="table">   
+                                     <tr class="table-cabecalho">
+                                        <th>Classificação</th>
+                                        <th>IMC(kg/m2)</th>
+                                    </tr>  
+            
+                                    <tr class="item-table">
+                                        <td>Baixo Peso</td>
+                                        <td>Menor que 18.5</td>
+                                    </tr>
+            
+                                    <tr class="item-table">
+                                        <td>Normal</td>
+                                        <td>18.5 a 24.9</td>
+                                    </tr>
+            
+                                    <tr class="item-table">
+                                        <td>Sobrepeso</td>
+                                        <td>Maior 25</td>
+                                    </tr>
+            
+                                    <tr class="item-table">
+                                        <td>Pré-obeso</td>
+                                        <td>25 a 29.9 </td>
+                                    </tr>
+            
+                                    <tr class="item-table">
+                                        <td>Obeso 1</td>
+                                        <td>30 a 34.9 </td>
+                                    </tr>
+            
+                                    <tr class="item-table">
+                                        <td>Obeso 2</td>
+                                        <td>35 a 39.9 </td>
+                                    </tr>
+            
+                                    <tr class="item-table">
+                                        <td>Obeso 3</td>
+                                        <td>Maior que 40</td>
+                                    </tr>
+            
+                                  </table>  
+                            </div> -->
+            
+                       </div><div class="div-resposta">
+                            <div class="div-input-form">
+                                <span class="info-resposta"> O seu IMC é : </span>
+                                <input class="input-resposta" type="text" readonly="" id="imc" value=" ">
+                                <input class="input-resposta" type="text" readonly="" id="imcReferencia" value=" ">
+                            </div>
+                            
+                            <div class="div-input-form">
+                                <button class="button-form" id="calcularNovamente">Calcular Novamente</button>
+                            </div>
+            
+                            <div class="div-input-form">
+                                <table class="table">   
+                                   <tbody><tr class="item-table">
+                                      <th>Classificação</th>
+                                      <th>IMC(kg/m2)</th>
+                                  </tr>  
+            
+                                  <tr class="item-table">
+                                      <td>BaixoPeso</td>
+                                      <td>Menor que 18.5</td>
+                                  </tr>
+            
+                                  <tr class="item-table">
+                                      <td>Normal</td>
+                                      <td>18.5 a 24.9</td>
+                                  </tr>
+            
+                                  <tr class="item-table">
+                                      <td>Sobrepeso</td>
+                                      <td>Maior 25</td>
+                                  </tr>
+            
+                                  <tr class="item-table">
+                                      <td>Pré-obeso</td>
+                                      <td>25 a 29.9 </td>
+                                  </tr>
+            
+                                  <tr class="item-table">
+                                      <td>Obeso 1</td>
+                                      <td>30 a 34.9</td>
+                                  </tr>
+            
+                                  <tr class="item-table">
+                                      <td>Obeso 2</td>
+                                      <td>35 a 39.9</td>
+                                  </tr>
+            
+                                  <tr class="item-table">
+                                      <td>Obeso 3</td>
+                                      <td>Maior que 40</td>
+                                  </tr>
+            
+                                </tbody></table>  
+                          </div>
+            
+                     </div>
+            
+                </div>
+                <script>
+            
+                       var divForm = document.querySelector('.div-form');
+                       var divResposta = document.querySelector('.div-resposta');
+                       var btnCalcular = document.querySelector('#calcular'); 
+                       var btnCalcularNovamente = document.querySelector('#calcularNovamente');
+                       var altura = document.getElementById('altura');
+                       var peso = document.getElementById('peso'); 
+                       var imc = document.getElementById('imc'); 
+                       var imcReferencia = document.getElementById('imcReferencia');
+                       var spanErro = document.querySelector('.info-erro'); 
+            
+                       btnCalcular.addEventListener('click', function(){
+                                   
+                                    if((altura.value == 'undefined' || altura.value == '') &&  (peso.value == 'undefined' || peso.value == '' )){
+                                            spanErro.style.display = 'flex';
+                                            return;
+                                    }else{
+            
+                                          pesoCalc = peso.value.replace("," , ".");  
+                                          alturaCalc = altura.value.replace("," , ".");
+                                          var imcValue = (pesoCalc/( alturaCalc *  alturaCalc)).toFixed(2);
+                                          imc.value = imcValue;
+                                           
+                                          imcReferencia.value = referenciaIMC(imcValue);
+            
+                                          divForm.style.display = 'none';
+                                          divResposta.style.display = 'flex';
+                                    }
+                                
+                       });
+            
+                       btnCalcularNovamente.addEventListener('click', function(){
+                                    altura.value = '';
+                                    peso.value = '';
+                                    imc.value = '';
+                                    divResposta.style.display = 'none';
+                                    divForm.style.display = 'flex';
+                       });
+            
+                        function referenciaIMC(imc){
+                                if(imc < 18.5){
+                                    return 'Baixo peso';  
+                                } 
+                                if(imc >= 18.5 && imc < 25 ){
+                                    return 'Normal';
+                                }
+                                if(imc > 25 && imc < 25.5){
+                                    return 'Sobre peso';
+                                }
+                                if(imc > 25.5 && imc < 30){
+                                        return 'Pré-obeso';
+                                }
+                                if(imc > 30 && imc < 35){
+                                    return 'Obeso nivel 1';
+                                }
+                                if(imc > 35 && imc < 40){
+                                    return 'Obeso nivel 2';
+                                }
+                                if(imc > 40){
+                                    return 'Obeso nivel 3';
+                                }
+                        }
+            
+                    </script>
+            </body>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+        </main>
+    
+    </body>
+    
+    </html>
          
         
