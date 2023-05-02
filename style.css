@@ -32,7 +32,7 @@
     .cabecalho__menu-item{
         display: inline;
         margin-left: 20px;
-        color:rgb(22, 21, 21);
+        color:rgb(17, 7, 112);
         font-size: 32px;
         -webkit-text-stroke-width: 1px;
         -webkit-text-stroke-color: black;
@@ -62,7 +62,7 @@
     
     .professores {
         text-align: center;
-        background-color: grey;
+        background-color: rgb(43, 13, 74);
         border-radius: 40px;
         margin: 20px;
     }
